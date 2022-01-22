@@ -190,6 +190,10 @@ FlowRouter.route('/v/:author/:permlink', {
                 $('body').animate({ scrollTop: 0 }, 'slow');
                 setTimeout(function() { Template.video.activatePopups() }, 1000)
                 Template.player.rendered()
+
+                if(queryParams.t) {
+                    Template.video.seekTo(queryParams.t)
+                }
             } else FlowRouter.go('/')
         })
 

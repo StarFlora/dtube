@@ -375,10 +375,9 @@ Template.video.events({
 })
 
 Template.video.seekTo = function (seconds) {
-    $('iframe')[0].contentWindow.postMessage({
-        seekTo: true,
-        seekTime: seconds
-    }, '*')
+    Template.player.whenApiReady(() => {
+        Template.player.api.seekTo(seconds)
+    })
 }
 
 Template.video.loadState = function () {
